@@ -7,7 +7,7 @@ class Navegacion {
     do{
     stdout.writeln("Bienvenido, seleccione una opcion:");
     stdout.writeln("1. Consultar existencias");//si las existencias son menores de cierto numero se marcaran para reponerlas
-    stdout.writeln("2. Gestionar existencias");//para añadir y ajustar las cantidades que hay en stock
+    stdout.writeln("2. Añadir existencias");//para añadir y ajustar las cantidades que hay en stock
     stdout.writeln("3. Salidas de producto");//para marcar los productso que salen del alamcenFf
     stdout.writeln("4. Salir");
       opcion = stdin.readLineSync()?? "";
@@ -24,11 +24,27 @@ class Navegacion {
       case "1":
       return "consultarExistencias";
       case "2":
-      return "reajustarExistencias";
+      return "addExistencias";
       case "3":
       return "salidasProducto";
+      case "4":
+      return "salir";
     }
     return "menuAcciones";
+  }
+  static Future<String> addExistencias() async{
+    String? nombreArticulo;
+    String? proveedor;
+    String? entrada;
+    int? cantidad;
+    stdout.writeln("Introduzca el nombre del articulo");
+    nombreArticulo = stdin.readLineSync()?? "";
+    stdout.writeln("Introduzca el proveedor del articulo");
+    proveedor = stdin.readLineSync()?? "";
+    stdout.writeln("Introduzca la cantidad");
+    entrada = stdin.readLineSync()?? "";
+    cantidad = int.tryParse(entrada);
+    
   }
   static Future<String> consultarExistencias() async{
   List<Producto> existencias = await Producto.recuperarStock();

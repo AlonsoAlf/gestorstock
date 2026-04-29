@@ -1,8 +1,8 @@
 import 'utils/utils.dart';
 void main()async{
 DataBase.crearDataBase();
-String pantalla = Navegacion.inicio;
 bool ejecutando = true;
+String pantalla = Navegacion.inicio;
 while(ejecutando) {
   switch(pantalla){
     case "pantallaPrincipal":
