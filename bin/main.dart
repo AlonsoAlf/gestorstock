@@ -1,12 +1,24 @@
 import 'utils/utils.dart';
-String main(){
-bool ejecutando = true;
+void main()async{
+DataBase.crearDataBase();
 String pantalla = Navegacion.inicio;
-while(ejecutando){
+bool ejecutando = true;
+while(ejecutando) {
   switch(pantalla){
     case "pantallaPrincipal":
-    return pantalla = Navegacion.menuAcciones();
-    
+    pantalla = await Navegacion.menuAcciones();
+    break;
+    case "menuAcciones":
+    pantalla = await Navegacion.menuAcciones();
+    break;
+    case "consultarExistencias":
+    pantalla = await Navegacion.consultarExistencias();
+    break;
+    case "salir":
+    if(pantalla == "salir"){
+      print("Saliendo");
+      ejecutando = false;
+    }
   }
 }
 }

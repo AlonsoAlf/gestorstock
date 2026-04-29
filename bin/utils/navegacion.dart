@@ -1,4 +1,5 @@
 import 'dart:io';
+import '../entities.dart/entities.dart';
 class Navegacion {
   static String inicio = "pantallaPrincipal";
   static String menuAcciones(){
@@ -29,7 +30,11 @@ class Navegacion {
     }
     return "menuAcciones";
   }
-  static String consultarExistencias(){
-    
+  static Future<String> consultarExistencias() async{
+  List<Producto> existencias = await Producto.recuperarStock();
+  for(int i = 0; i < existencias.length; i++){
+    print("${existencias[i].id} [${existencias[i].nombre},${existencias[i].proveedor},${existencias[i].cantidad}]");
+  }
+  return "menuAcciones";
   }
 }
